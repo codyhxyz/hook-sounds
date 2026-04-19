@@ -8,6 +8,7 @@
   <a href=".claude-plugin/plugin.json"><img src="https://img.shields.io/github/package-json/v/codyhxyz/hook-sounds?filename=.claude-plugin%2Fplugin.json&label=version" alt="Version"></a>
   <a href="https://claude.com/product/claude-code"><img src="https://img.shields.io/badge/built_for-Claude%20Code-d97706" alt="Built for Claude Code"></a>
   <a href="https://support.apple.com/en-us/HT201260"><img src="https://img.shields.io/badge/platform-macOS-999999" alt="macOS"></a>
+  <a href="https://github.com/codyhxyz/codyhxyz-plugins"><img src="https://img.shields.io/badge/part_of-codyhxyz--plugins-ffd900?logo=github&logoColor=000" alt="Part of codyhxyz-plugins"></a>
 </p>
 
 <p align="center"><b>Play a random sound file when Claude Code fires a hook. You supply the audio.</b></p>
@@ -32,9 +33,11 @@ After: `/plugin install hook-sounds`. Drop audio files into `~/.claude/plugins/h
 From the single-plugin marketplace:
 
 ```
-/plugin marketplace add codyhxyz/hook-sounds
-/plugin install hook-sounds@hook-sounds
+/plugin marketplace add codyhxyz/codyhxyz-plugins
+/plugin install hook-sounds@codyhxyz-plugins
 ```
+
+See the full [codyhxyz-plugins marketplace](https://github.com/codyhxyz/codyhxyz-plugins) for my other plugins.
 
 Local smoke test:
 
@@ -199,3 +202,7 @@ Issues and PRs welcome. If the script behaves unexpectedly with a valid audio fi
 ## License
 
 [MIT](LICENSE) © 2026 Cody Hergenroeder
+
+---
+
+<sub>Part of <a href="https://github.com/codyhxyz/codyhxyz-plugins"><b>codyhxyz-plugins</b></a> 🍋 — my registry of Claude Code plugins.</sub>
