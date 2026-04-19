@@ -1,0 +1,21 @@
+{
+  "name": "hook-sounds",
+  "metadata": {
+    "description": "Single-plugin marketplace for hook-sounds."
+  },
+  "owner": {
+    "name": "Cody Hergenroeder",
+    "email": "plugins@codyh.xyz"
+  },
+  "plugins": [
+    {
+      "name": "hook-sounds",
+      "description": "Plays short audio stings on Claude Code hook events (SessionStart, Stop, Notification, SessionEnd) — bring your own sounds, drop them in, pick randomly.",
+      "source": "./",
+      "author": {
+        "name": "Cody Hergenroeder",
+        "email": "plugins@codyh.xyz"
+      }
+    }
+  ]
+}
