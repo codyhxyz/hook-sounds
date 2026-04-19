@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "hook-sounds",
-      "description": "Plays short audio stings on Claude Code hook events (SessionStart, Stop, Notification, SessionEnd) — bring your own sounds, drop them in, pick randomly.",
+      "description": "Plays short audio stings on Claude Code hook events (SessionStart, Stop, Notification, SessionEnd). Ships with an Oddworld pack; drop your own in to override.",
       "source": "./",
       "author": {
         "name": "Cody Hergenroeder",

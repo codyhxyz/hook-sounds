@@ -17,16 +17,17 @@ Wires four Claude Code hook events (`SessionStart`, `Stop`, `Notification`, `Ses
 - Never use absolute paths. Never use `..` traversal. Plugins are copied to `~/.claude/plugins/cache/` on install and both will break.
 - User state (their dropped-in sounds, the mute flag) lives in `${CLAUDE_PLUGIN_DATA}` — never in `${CLAUDE_PLUGIN_ROOT}`, which is read-only across updates.
 
-## Never commit audio
+## Audio in the repo
 
-`sounds/default/<event>/` directories exist only to mark slots. If you add audio to this repo, the file must be:
+`sounds/default/<event>/` ships with an Oddworld: Munch's Oddysee pack as of v0.2.0. Yes, it's ripped game audio. The author shipped it anyway — see README "Why this exists" for the reasoning. If Oddworld Inhabitants files a takedown, roll back to empty directories.
+
+**Do NOT add more copyrighted packs on top of this one.** One self-aware liability is a judgment call; a second one is a pattern. Any new audio must be:
 
 - Your own original work, OR
 - CC0 / public-domain with clear attribution in the commit message, OR
 - Kenney.nl / OpenGameArt CC0 pack with a link to the source
 
-Never commit:
-- Ripped game audio (Oddworld, Minecraft, anything commercial)
+Also never commit:
 - Sonniss GDC bundle files (license prohibits redistribution as a sound library)
 - Sounds whose license you haven't read
 

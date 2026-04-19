@@ -12,7 +12,7 @@
 
 <p align="center"><b>Play a random sound file when Claude Code fires a hook. You supply the audio.</b></p>
 
-Claude Code fires five hook events over a session's lifetime: `SessionStart`, `UserPromptSubmit`, `Stop`, `Notification`, `SessionEnd`. This plugin wires four of them to a 30-line shell script that picks a random file from a directory and plays it with `afplay`. That's it. Ships no audio.
+Claude Code fires five hook events over a session's lifetime: `SessionStart`, `UserPromptSubmit`, `Stop`, `Notification`, `SessionEnd`. This plugin wires four of them to a 30-line shell script that picks a random file from a directory and plays it with `afplay`. Ships with an [Oddworld: Munch's Oddysee](#why-this-exists) pack preloaded across all five event bags (55 files). Drop your own files in to override.
 
 ## Before and after
 
@@ -24,7 +24,7 @@ After: `/plugin install hook-sounds`. Drop audio files into `~/.claude/plugins/h
 
 - Four hooks wired by default: `SessionStart`, `Stop`, `Notification`, `SessionEnd`. `UserPromptSubmit` is supported but unwired because it fires every time you hit enter and gets old fast.
 - Random picker per event. Drop one file or thirty, the script fans out across whatever's in the dir.
-- Your sounds live in `$CLAUDE_PLUGIN_DATA/sounds/<event>/` and survive plugin updates. Bundled defaults under `sounds/default/<event>/` are the fallback (empty by default).
+- Your sounds live in `$CLAUDE_PLUGIN_DATA/sounds/<event>/` and survive plugin updates. Bundled defaults under `sounds/default/<event>/` are the fallback — preloaded with an Oddworld pack, see [Why this exists](#why-this-exists).
 - Two mute paths: the plugin-scoped `toggle-mute.sh`, and the legacy `~/.claude/sounds/muted` flag that my previous setup already used. Both are honored.
 
 ## Install
@@ -167,11 +167,11 @@ The picker looks in each event's dir independently. Empty dirs are silently skip
 2. Looks in `$CLAUDE_PLUGIN_DATA/sounds/<event>/` first (your override), then falls back to `$CLAUDE_PLUGIN_ROOT/sounds/default/<event>/` (bundled).
 3. Picks a random file with `find` + bash `RANDOM` and plays it with `afplay` in the background.
 
-No audio is bundled. `sounds/default/` ships empty directories. Override-first resolution means plugin updates don't overwrite your sounds.
+An Oddworld pack ships in `sounds/default/<event>/` (55 files — see [Why this exists](#why-this-exists)). Override-first resolution means your `$CLAUDE_PLUGIN_DATA/sounds/<event>/` files take precedence and plugin updates don't overwrite them.
 
-## Sourcing sounds
+## Swapping the pack
 
-Don't rip copyrighted audio from commercial games into a public directory. Some CC0 starting points:
+Don't love the Oddworld vibe? Drop your own audio into `~/.claude/plugins/hook-sounds/sounds/<event>/` and it takes precedence. CC0 starting points if you're starting fresh:
 
 - [Kenney.nl](https://kenney.nl/assets?q=audio): full CC0, game-oriented packs (creatures, UI, impact).
 - [freesound.org](https://freesound.org/): filter explicitly to CC0. Quality varies a lot.
@@ -180,9 +180,13 @@ Don't rip copyrighted audio from commercial games into a public directory. Some 
 
 ## Why this exists
 
-I had a working hook rig at `~/.claude/settings.json` with five hook entries, a `sounds/` folder, and a couple of `play_*.sh` scripts. It was great, except the sounds were ripped Oddworld audio, so I couldn't share it without shipping a copyright problem. This plugin is the wiring from that rig, published empty. If you want the same UX, you bring your own audio.
+I had a working hook rig at `~/.claude/settings.json` with five hook entries, a `sounds/` folder, and a couple of `play_*.sh` scripts. It was great. The sounds were ripped Oddworld: Munch's Oddysee audio — Abe saying "hello", Mudokons muttering on task completion, a resurrect chant on session start, death whimpers on session end. Dumb. Joyful.
 
-It is not a sound pack. Zero audio ships here.
+I went back and forth on this. The clean move is to ship the plugin empty and tell you to bring your own audio. That's what v0.1.0 did.
+
+v0.2.0 ships the Oddworld pack anyway. My read: Oddworld Inhabitants has a total of ten people who will ever find this repo, and bigger things to do than file takedowns against a dev-tool plugin with fifty stars. If I'm wrong, they send a cease-and-desist, I pull the pack, and v0.3.0 goes back to empty directories. Low stakes.
+
+If you're not comfortable with that, the [Swapping the pack](#swapping-the-pack) section has CC0 alternatives. Drop your own into `~/.claude/plugins/hook-sounds/sounds/<event>/` and you're clean.
 
 ## Platform
 
